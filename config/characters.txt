@@ -1,0 +1,2 @@
+character1, magician, 100, 90, 80
+character2, bercerk, 200, 80, 100
