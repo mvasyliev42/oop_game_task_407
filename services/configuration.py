@@ -1,4 +1,4 @@
-from basecard import BaseCard
+from services.basecard import BaseCard
 
 
 class Configuration:

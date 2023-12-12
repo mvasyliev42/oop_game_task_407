@@ -7,3 +7,9 @@ class Players:
 
     def add_card(self, card_object):
         self.card_list.append(card_object)
+
+    def print_card(self):
+        print(self.name)
+        for card in self.card_list:
+            print(card.name, card.description, card.strength, card.health, card.mana)
+        print()
