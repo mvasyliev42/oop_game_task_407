@@ -1,6 +1,5 @@
-from characters import Characters
 from mechanic import Mechanics
-from configuration import Configuration
+from services.configuration import Configuration
 
 config = Configuration()
 
@@ -11,3 +10,9 @@ fight = Mechanics()
 fight.fight_function(next(heroes), next(heroes))
 
 print(fight.get_winner())
+
+
+
+# todo: 1. Створити конфігурацію карт з файлу
+# todo: 2. Створити список з карт і роздати по дві карти гравцям.
+# todo: 3. Робимо механіку: 1. виставлення карт, 2. Розрахунок результату бою, 3. Перевірка станів гравців
