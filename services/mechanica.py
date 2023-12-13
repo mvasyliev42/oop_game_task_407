@@ -4,6 +4,19 @@ class Mechanica:
         self.player2_cards = []
         self.player1 = player1
         self.player2 = player2
+
+    def choose_cards(self):
+        for _ in range(2):
+            for i, card in enumerate(self.player1.card_list):
+                print(i, card.name)
+            card_index = int(input(f"{self.player1.name}, choose a card"))
+            self.set_cards(1, self.player1.card_list[card_index])
+            for i, card in enumerate(self.player2.card_list):
+                print(i, card.name)
+            card_index2 = int(input(f"{self.player2.name}, choose a card"))
+            self.set_cards(2, self.player2.card_list[card_index2])
+
+
     def set_cards(self, player, card):
         if player == 1:
             self.player1_cards.append(card)
