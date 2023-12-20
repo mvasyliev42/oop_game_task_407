@@ -6,22 +6,39 @@ class BaseMechanica:
         self.player2 = player2
 
     def choose_cards(self):
-        for _ in range(1):
+        while True:
 
+            player1_pass = False
             for i, card in enumerate(self.player1.card_list):
-                print(i, card.name)
+                print(i, card.name, card.manna, card.strength)
+            print("Enter 100 to pass")
             card_index = self.player1_input()
-            print("The", self.player1.name, "took the card: ", card_index)
-            self.set_cards(1, self.player1.card_list[card_index])
-            del self.player1.card_list[card_index]
+            if card_index == 100:
+                player1_pass = True
+            else:
+                print("The", self.player1.name, "took the card: ", card_index)
+                if self.player1.card_list[card_index].manna <= self.player1.manna:
+                    self.set_cards(1, self.player1.card_list[card_index])
+                    del self.player1.card_list[card_index]
+                else:
+                    player1_pass = True
 
-
+            player2_pass = False
             for i, card in enumerate(self.player2.card_list):
-                print(i, card.name)
+                print(i, card.name, card.manna, card.strength)
+            print("Enter 100 to pass")
             card_index2 = self.player2_input()
-            print("The", self.player2.name, "took the card: ", card_index2)
-            self.set_cards(2, self.player2.card_list[card_index2])
-            del self.player2.card_list[card_index2]
+            if card_index2 == 100:
+                player2_pass = True
+            else:
+                print("The", self.player2.name, "took the card: ", card_index2)
+                if self.player2.card_list[card_index2].manna <= self.player2.manna:
+                    self.set_cards(2, self.player2.card_list[card_index2])
+                    del self.player2.card_list[card_index2]
+                else:
+                    player2_pass = True
+            if player1_pass and player2_pass:
+                break
 
 
         #todo: 1. створити безкінечний цикл
@@ -31,8 +48,10 @@ class BaseMechanica:
     def set_cards(self, player, card):
         if player == 1:
             self.player1_cards.append(card)
+            self.player1.manna -= card.manna
         else:
             self.player2_cards.append(card)
+            self.player2.manna -= card.manna
 
     def fight_function(self):
         player1_card_attack = 0
@@ -63,7 +82,7 @@ class BaseMechanica:
             return self.player2
 
     def player1_input(self):
-        return int(input(f"{self.player1.name}, choose a card"))
+        return int(input(f"{self.player1.name}, {self.player1.manna}, choose a card"))
 
     def player2_input(self):
-        return int(input(f"{self.player2.name}, choose a card"))
+        return int(input(f"{self.player2.name}, {self.player2.manna}, choose a card"))
