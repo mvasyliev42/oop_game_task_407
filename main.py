@@ -1,3 +1,4 @@
+import random
 from mechanic import Mechanics
 from services.configuration import Configuration
 from services.players import Players
@@ -8,10 +9,10 @@ cards = config.readconfig().create_card()
 player1 = Players(50, "player1")
 player2 = Players(50, "player2")
 
-player1.add_card(next(cards))
-player1.add_card(next(cards))
-player2.add_card(next(cards))
-player2.add_card(next(cards))
+for i in range(3):
+    player1.add_card(random.choice(cards))
+    player2.add_card(random.choice(cards))
+
 
 player1.print_card()
 player2.print_card()

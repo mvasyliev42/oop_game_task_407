@@ -8,7 +8,7 @@ class Configuration:
         self.cards_configs = []
 
     def readconfig(self):
-        read = open(self.config_characters_file_name, 'r')
+        read = open(self.config_characters_file_name, 'r', encoding="UTF-8")
         for i in read:
             divide = i.split('|')
 
@@ -23,6 +23,7 @@ class Configuration:
         return self
 
     def create_card(self):
+        card_list = []
         for card_config in self.cards_configs:
-            yield BaseCard(card_config["name"], card_config["description"], card_config["strength"],
-                           card_config["health"], card_config["mana"])
+            card_list.append(BaseCard(card_config["name"], card_config["description"], card_config["strength"], card_config["health"], card_config["mana"]))
+        return card_list
