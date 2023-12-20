@@ -2,7 +2,12 @@ import random
 from mechanic import Mechanics
 from services.configuration import Configuration
 from services.players import Players
-from services.mechanica import Mechanica
+from services.mechanica.mechanicapc import MechanicaPC
+from services.mechanica.mechanicaplayers import MechanicaPlayers
+
+
+type_game = int(input("Get type game (0 - PC/ 1 - Player): "))
+
 
 config = Configuration("config/card.conf")
 
@@ -18,10 +23,14 @@ for i in range(3):
 player1.print_card()
 player2.print_card()
 
-mechanica = Mechanica(player1, player2)
+if type_game == 0:
+    mechanica = MechanicaPC(player1, player2)
+else:
+    mechanica = MechanicaPlayers(player1, player2)
 
 list = []
 for i in range(3):
+
     mechanica.choose_cards()
 
     mechanica.fight_function()

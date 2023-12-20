@@ -1,4 +1,4 @@
-class Mechanica:
+class BaseMechanica:
     def __init__(self, player1, player2):
         self.player1_cards = []
         self.player2_cards = []
@@ -10,16 +10,17 @@ class Mechanica:
 
             for i, card in enumerate(self.player1.card_list):
                 print(i, card.name)
-            card_index = int(input(f"{self.player1.name}, choose a card"))
+            card_index = self.player1_input()
+            print("The", self.player1.name, "took the card: ", card_index)
             self.set_cards(1, self.player1.card_list[card_index])
             del self.player1.card_list[card_index]
 
             for i, card in enumerate(self.player2.card_list):
                 print(i, card.name)
-            card_index2 = int(input(f"{self.player2.name}, choose a card"))
+            card_index2 = self.player2_input()
+            print("The", self.player2.name, "took the card: ", card_index2)
             self.set_cards(2, self.player2.card_list[card_index2])
             del self.player2.card_list[card_index2]
-
 
     def set_cards(self, player, card):
         if player == 1:
@@ -54,3 +55,9 @@ class Mechanica:
 
         else:
             return self.player2
+
+    def player1_input(self):
+        return int(input(f"{self.player1.name}, choose a card"))
+
+    def player2_input(self):
+        return int(input(f"{self.player2.name}, choose a card"))
