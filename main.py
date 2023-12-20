@@ -43,8 +43,4 @@ for i in range(3):
         print("game winer", playerwinner.name)
         break
 
-    print("round winer" , playerwinner.name)
-
-# todo: 1. Створити конфігурацію карт з файлу
-# todo: 2. Створити список з карт і роздати по дві карти гравцям.
-# todo: 3. Робимо механіку: 1. виставлення карт, 2. Розрахунок результату бою, 3. Перевірка станів гравців
+    print("round winer", playerwinner.name)
