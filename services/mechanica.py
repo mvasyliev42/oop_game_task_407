@@ -6,7 +6,7 @@ class Mechanica:
         self.player2 = player2
 
     def choose_cards(self):
-        for _ in range(2):
+        for _ in range(1):
             for i, card in enumerate(self.player1.card_list):
                 print(i, card.name)
             card_index = int(input(f"{self.player1.name}, choose a card"))

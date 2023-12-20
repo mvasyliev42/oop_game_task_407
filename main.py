@@ -19,11 +19,22 @@ player1.print_card()
 player2.print_card()
 
 mechanica = Mechanica(player1, player2)
-mechanica.choose_cards()
 
-mechanica.fight_function()
-playerwinner = mechanica.check_winner()
-print(playerwinner.name)
+list = []
+for i in range(3):
+    mechanica.choose_cards()
+
+    mechanica.fight_function()
+    playerwinner = mechanica.check_winner()
+    list.append(playerwinner)
+    if list.count(player1) > 1:
+        print("game winer", playerwinner.name)
+        break
+    if list.count(player2) > 1:
+        print("game winer", playerwinner.name)
+        break
+
+    print("round winer" , playerwinner.name)
 
 # todo: 1. Створити конфігурацію карт з файлу
 # todo: 2. Створити список з карт і роздати по дві карти гравцям.
