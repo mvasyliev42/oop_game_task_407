@@ -11,6 +11,9 @@ class BaseMechanica:
             player1_pass = False
             for i, card in enumerate(self.player1.card_list):
                 print(i, card.name, card.manna, card.strength)
+                # todo: винести в окрему функцію
+                if card.skill:
+                    print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
             print("Enter 100 to pass")
             card_index = self.player1_input()
             if card_index == 100:
@@ -26,6 +29,9 @@ class BaseMechanica:
             player2_pass = False
             for i, card in enumerate(self.player2.card_list):
                 print(i, card.name, card.manna, card.strength)
+                # todo: винести в окрему функцію
+                if card.skill:
+                    print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
             print("Enter 100 to pass")
             card_index2 = self.player2_input()
             if card_index2 == 100:

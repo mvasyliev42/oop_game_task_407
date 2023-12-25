@@ -12,4 +12,6 @@ class Players:
         print(self.name)
         for card in self.card_list:
             print(card.name, card.description, card.strength, card.health, card.manna)
+            if card.skill:
+                print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
         print()
