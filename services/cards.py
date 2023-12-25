@@ -1,4 +1,4 @@
-from basecard import *
+from services.basecard import *
 
 class Cards(BaseCard):
     def __init__(self, name, description, strength, health, manna):
