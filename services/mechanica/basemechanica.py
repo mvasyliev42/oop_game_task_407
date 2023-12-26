@@ -21,6 +21,9 @@ class BaseMechanica:
             else:
                 print("The", self.player1.name, "took the card: ", card_index)
                 if self.player1.card_list[card_index].manna <= self.player1.manna:
+                    skill_use = self.player1_input()
+                    if skill_use == 1:
+                        self.player1.card_list[card_index].skill_use = True
                     self.set_cards(1, self.player1.card_list[card_index])
                     del self.player1.card_list[card_index]
                 else:
@@ -33,14 +36,17 @@ class BaseMechanica:
                 if card.skill:
                     print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
             print("Enter 100 to pass")
-            card_index2 = self.player2_input()
-            if card_index2 == 100:
+            card_index = self.player2_input()
+            if card_index == 100:
                 player2_pass = True
             else:
-                print("The", self.player2.name, "took the card: ", card_index2)
-                if self.player2.card_list[card_index2].manna <= self.player2.manna:
-                    self.set_cards(2, self.player2.card_list[card_index2])
-                    del self.player2.card_list[card_index2]
+                print("The", self.player2.name, "took the card: ", card_index)
+                if self.player2.card_list[card_index].manna <= self.player2.manna:
+                    skill_use = self.player2_input()
+                    if skill_use == 1:
+                        self.player2.card_list[card_index].skill_use = True
+                    self.set_cards(2, self.player2.card_list[card_index])
+                    del self.player2.card_list[card_index]
                 else:
                     player2_pass = True
             if player1_pass and player2_pass:
