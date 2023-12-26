@@ -71,9 +71,15 @@ class BaseMechanica:
         player2_card_attack = 0
         player2_card_protection = 0
         for i in self.player1_cards:
+            if i.skill_use == True:
+                player1_card_attack += i.skill_strength
+                player1_card_protection += i.skill_health
             player1_card_attack += i.strength
             player1_card_protection += i.health
         for j in self.player2_cards:
+            if j.skill_use == True:
+                player2_card_attack += j.skill_strength
+                player2_card_protection += j.skill_health
             player2_card_attack += j.strength
             player2_card_protection += j.health
 
