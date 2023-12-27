@@ -17,7 +17,7 @@ class BaseMechanica:
                     player_messages += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna} \n"
             player_messages += "Enter 100 to pass \n"
             connect1.sendMessagesPlayer1(player_messages)
-            card_index = self.player1_input()
+            card_index = int(connect1.recvMessagesPlayer1()) #self.player1_input()
             if card_index == 100:
                 player1_pass = True
             else:
@@ -40,7 +40,7 @@ class BaseMechanica:
                     player_messages += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna} \n"
             player_messages += "Enter 100 to pass \n"
             connect2.sendMessagesPlayer2(player_messages)
-            card_index = self.player2_input()
+            card_index = int(connect2.recvMessagesPlayer2()) #self.player2_input()
             if card_index == 100:
                 player2_pass = True
             else:

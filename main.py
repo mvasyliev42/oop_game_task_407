@@ -44,9 +44,13 @@ for i in range(3):
     list.append(playerwinner)
     if list.count(player1) > 1:
         print("game winer", playerwinner.name)
+        socket_server.sendMessagesPlayer1(f"game winer {playerwinner.name}")
+        socket_server.sendMessagesPlayer2(f"game winer {playerwinner.name}")
         break
     if list.count(player2) > 1:
         print("game winer", playerwinner.name)
+        socket_server.sendMessagesPlayer1(f"game winer {playerwinner.name}")
+        socket_server.sendMessagesPlayer2(f"game winer {playerwinner.name}")
         break
 
-    print("round winer", playerwinner.name)
+    #print("round winer", playerwinner.name)
