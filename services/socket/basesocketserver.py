@@ -29,10 +29,10 @@ class BaseSocketServer:
     def sendMessagesPlayer2(self, messages):
         pass
 
-    def recvMessagesPlayer1(self, messages):
+    def recvMessagesPlayer1(self):
         pass
 
-    def recvMessagesPlayer2(self, messages):
+    def recvMessagesPlayer2(self):
         pass
 
 

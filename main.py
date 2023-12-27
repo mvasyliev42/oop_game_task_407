@@ -29,6 +29,9 @@ socket_server.sendMessagesPlayer1(player1_cards)
 player2_cards = player2.print_card()
 socket_server.sendMessagesPlayer2(player2_cards)
 
+socket_server.recvMessagesPlayer1()
+socket_server.recvMessagesPlayer2()
+
 if type_game == 0:
     mechanica = MechanicaPC(player1, player2)
 else:
@@ -37,7 +40,7 @@ else:
 list = []
 for i in range(3):
 
-    mechanica.choose_cards()
+    mechanica.choose_cards(socket_server, socket_server)
 
     mechanica.fight_function()
     playerwinner = mechanica.check_winner()

@@ -23,7 +23,8 @@ class BaseMechanica:
             else:
                 print("The", self.player1.name, "took the card: ", card_index)
                 if self.player1.card_list[card_index].manna <= self.player1.manna:
-                    skill_use = self.player1_input()
+                    connect1.sendMessagesPlayer1("Enable skill? \n")
+                    skill_use = int(connect1.recvMessagesPlayer1()) #self.player1_input()
                     if skill_use == 1:
                         self.player1.card_list[card_index].skill_use = True
                     self.set_cards(1, self.player1.card_list[card_index])
@@ -46,7 +47,8 @@ class BaseMechanica:
             else:
                 print("The", self.player2.name, "took the card: ", card_index)
                 if self.player2.card_list[card_index].manna <= self.player2.manna:
-                    skill_use = self.player2_input()
+                    connect2.sendMessagesPlayer2("Enable skill? \n")
+                    skill_use = int(connect2.recvMessagesPlayer2()) #self.player2_input()
                     if skill_use == 1:
                         self.player2.card_list[card_index].skill_use = True
                     self.set_cards(2, self.player2.card_list[card_index])

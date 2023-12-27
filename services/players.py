@@ -1,6 +1,6 @@
 class Players:
     def __init__(self, helth, name):
-        self.manna = 10
+        self.manna = 100
         self.health = helth
         self.name = name
         self.card_list = []
