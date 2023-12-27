@@ -8,3 +8,5 @@ class BaseCard:
         self.manna = manna
 
 
+
+

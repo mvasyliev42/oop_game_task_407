@@ -53,10 +53,6 @@ class BaseMechanica:
                 break
 
 
-        #todo: 1. створити безкінечний цикл
-        #todo: 2. перевіряємо чи вистачає мани для карти, якщо ні, повторюємо вибір
-        #todo: 3. реалізуємо можливість пасу, та виходу з вибору карт при двох пасах
-
     def set_cards(self, player, card):
         if player == 1:
             self.player1_cards.append(card)
