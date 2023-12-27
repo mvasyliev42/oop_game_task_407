@@ -9,9 +9,11 @@ class Players:
         self.card_list.append(card_object)
 
     def print_card(self):
-        print(self.name)
+        message = ""
+        message += self.name + "\n"
         for card in self.card_list:
-            print(card.name, card.description, card.strength, card.health, card.manna)
+            message += f"{card.name}, {card.description}, {card.strength}, {card.health}, {card.manna}" + "\n"
             if card.skill:
-                print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
-        print()
+                message += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}" + "\n"
+        message += "\n"
+        return message

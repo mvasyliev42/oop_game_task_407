@@ -5,16 +5,18 @@ class BaseMechanica:
         self.player1 = player1
         self.player2 = player2
 
-    def choose_cards(self):
+    def choose_cards(self, connect1, connect2):
         while True:
 
             player1_pass = False
+            player_messages = ""
             for i, card in enumerate(self.player1.card_list):
-                print(i, card.name, card.manna, card.strength)
+                player_messages += f"{i}, {card.name}, {card.manna}, {card.strength} \n"
                 # todo: винести в окрему функцію
                 if card.skill:
-                    print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
-            print("Enter 100 to pass")
+                    player_messages += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna} \n"
+            player_messages += "Enter 100 to pass \n"
+            connect1.sendMessagesPlayer1(player_messages)
             card_index = self.player1_input()
             if card_index == 100:
                 player1_pass = True
@@ -30,12 +32,14 @@ class BaseMechanica:
                     player1_pass = True
 
             player2_pass = False
+            player_messages = ""
             for i, card in enumerate(self.player2.card_list):
-                print(i, card.name, card.manna, card.strength)
+                player_messages += f"{i}, {card.name}, {card.manna}, {card.strength} \n"
                 # todo: винести в окрему функцію
                 if card.skill:
-                    print(f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}")
-            print("Enter 100 to pass")
+                    player_messages += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna} \n"
+            player_messages += "Enter 100 to pass \n"
+            connect2.sendMessagesPlayer2(player_messages)
             card_index = self.player2_input()
             if card_index == 100:
                 player2_pass = True

@@ -4,24 +4,30 @@ from services.configuration import Configuration
 from services.players import Players
 from services.mechanica.mechanicapc import MechanicaPC
 from services.mechanica.mechanicaplayers import MechanicaPlayers
+from services.socket.socketserver import SocketServer
 
 
 type_game = int(input("Get type game (0 - PC/ 1 - Player): "))
 
+socket_server = SocketServer()
 
 config = Configuration("config/card.conf")
 
 cards = config.readconfig().create_card()
 player1 = Players(50, "player1")
 player2 = Players(50, "player2")
+socket_server.connectPlayer1()
+socket_server.connectPlayer2()
 
 for i in range(3):
     player1.add_card(random.choice(cards))
     player2.add_card(random.choice(cards))
 
 
-player1.print_card()
-player2.print_card()
+player1_cards = player1.print_card()
+socket_server.sendMessagesPlayer1(player1_cards)
+player2_cards = player2.print_card()
+socket_server.sendMessagesPlayer2(player2_cards)
 
 if type_game == 0:
     mechanica = MechanicaPC(player1, player2)
