@@ -5,11 +5,12 @@ from services.players import Players
 from services.mechanica.mechanicapc import MechanicaPC
 from services.mechanica.mechanicaplayers import MechanicaPlayers
 from services.socket.socketserver import SocketServer
+from services.telegram.telegram import *
 
 
-type_game = int(input("Get type game (0 - PC/ 1 - Player): "))
-
-socket_server = SocketServer()
+#type_game = int(input("Get type game (0 - PC/ 1 - Player): "))
+type_game = 1
+socket_server = Telegram()
 
 config = Configuration("config/card.conf")
 
