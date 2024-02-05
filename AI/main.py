@@ -4,6 +4,7 @@ import asyncio
 from openai import OpenAI
 import hashlib
 import requests
+from audioai import AudioAi
 
 
 # Task 1
@@ -72,8 +73,20 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ##context.bot.send_photo()
 
 
-application = ApplicationBuilder().token('5732842940:AAERTmbxxw20fQniRntUkQ3m-ROPUS3t_xw').build()
+# application = ApplicationBuilder().token('5732842940:AAERTmbxxw20fQniRntUkQ3m-ROPUS3t_xw').build()
+#
+# echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
+# application.add_handler(echo_handler)
+# application.run_polling()
 
-echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
-application.add_handler(echo_handler)
-application.run_polling()
+
+
+audio_gen = AudioAi([
+    "Ви, теж помітили, яка чудова весна цієї зими!"
+])
+
+for item in audio_gen:
+    print(item)
+
+
+
