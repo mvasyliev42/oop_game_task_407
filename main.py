@@ -10,11 +10,11 @@ from services.telegram.telegram import *
 
 #type_game = int(input("Get type game (0 - PC/ 1 - Player): "))
 type_game = 1
-socket_server = Telegram()
+socket_server = SocketServer()
 
 config = Configuration("config/card.conf")
 
-cards = config.readconfig().create_card()
+cards = config.read_config_database().create_card()
 player1 = Players(50, "player1")
 player2 = Players(50, "player2")
 socket_server.connectPlayer1()
@@ -40,7 +40,7 @@ else:
 
 list = []
 for i in range(3):
-
+    print(list)
     mechanica.choose_cards(socket_server, socket_server)
 
     mechanica.fight_function()
@@ -57,4 +57,5 @@ for i in range(3):
         socket_server.sendMessagesPlayer2(f"game winer {playerwinner.name}")
         break
 
-    #print("round winer", playerwinner.name)
+    print("round winer", playerwinner.name)
+    print(list)
