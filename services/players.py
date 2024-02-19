@@ -1,9 +1,10 @@
 class Players:
-    def __init__(self, helth, name):
+    def __init__(self, helth, name, users):
         self.manna = 100
         self.health = helth
         self.name = name
         self.card_list = []
+        self.users = users
 
         #todo: set userifno fields
 

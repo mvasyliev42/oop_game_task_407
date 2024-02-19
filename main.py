@@ -15,10 +15,8 @@ socket_server = SocketServer()
 config = Configuration("config/card.conf")
 
 cards = config.read_config_database().create_card()
-player1 = Players(50, "player1")
-player2 = Players(50, "player2")
-socket_server.connectPlayer1()
-socket_server.connectPlayer2()
+player1 = Players(50, "player1", socket_server.connectPlayer1())
+player2 = Players(50, "player2", socket_server.connectPlayer2())
 
 #todo: set user info to player obj 1, 2
 
