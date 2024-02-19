@@ -20,6 +20,8 @@ player2 = Players(50, "player2")
 socket_server.connectPlayer1()
 socket_server.connectPlayer2()
 
+#todo: set user info to player obj 1, 2
+
 for i in range(3):
     player1.add_card(random.choice(cards))
     player2.add_card(random.choice(cards))

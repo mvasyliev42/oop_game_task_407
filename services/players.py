@@ -5,6 +5,8 @@ class Players:
         self.name = name
         self.card_list = []
 
+        #todo: set userifno fields
+
     def add_card(self, card_object):
         self.card_list.append(card_object)
 
@@ -17,3 +19,5 @@ class Players:
                 message += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}" + "\n"
         message += "\n"
         return message
+
+    # todo: set userinfo add method
