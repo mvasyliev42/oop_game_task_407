@@ -1,38 +1,41 @@
 import socket
 import threading
 
+
 def client_program():
-    host = socket.gethostname() # "151.115.78.136" # as both code is running on same pc
-    port = 5000 # socket server port number
+    host = socket.gethostname()  # "151.115.78.136" # as both code is running on same pc
+    port = 5000  # socket server port number
 
-    client_socket = socket.socket() # instantiate
-    client_socket.connect((host, port)) # connect to the server
+    client_socket = socket.socket()  # instantiate
+    client_socket.connect((host, port))  # connect to the server
 
-    #message = input(" -> ") # take input
+    # message = input(" -> ") # take input
     message = ""
     while message.lower().strip() != 'bye':
+        data = client_socket.recv(1024).decode()  # receive response
 
-        data = client_socket.recv(1024).decode() # receive response
+        print("Server: ", data)  # show in terminal
 
-        print("Server: ", data) # show in terminal
+        message = input(" -> ")  # again take input
 
-        message = input(" -> ") # again take input
+        client_socket.send(message.encode())  # send message
 
-        client_socket.send(message.encode()) # send message
+    client_socket.close()  # close the connection
 
-
-    client_socket.close() # close the connection
 
 def recv():
     global client_socket
 
     while True:
-        pass
+        data = client_socket.recv(1024).decode()
+        print(data)
+
 
 def send():
     global client_socket
     while True:
-        pass
+        message = input(" -> ")
+        client_socket.send(message.encode())
 
 
 if __name__ == '__main__':
@@ -48,4 +51,4 @@ if __name__ == '__main__':
     thread1.start()
     thread2.start()
 
-    #client_program()
+    # client_program()
