@@ -16,9 +16,19 @@ config = Configuration("config/card.conf")
 
 cards = config.read_config_database().create_card()
 player1 = Players(50, "player1", socket_server.connectPlayer1())
+
+#todo: create game match
+
+
+
+
+
 player2 = Players(50, "player2", socket_server.connectPlayer2())
 
-#todo: set user info to player obj 1, 2
+#todo: insert valid info (id, password)
+
+
+
 
 for i in range(3):
     player1.add_card(random.choice(cards))
