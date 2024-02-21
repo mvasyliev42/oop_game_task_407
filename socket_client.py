@@ -4,7 +4,7 @@ import threading
 
 def client_program():
     host = socket.gethostname()  # "151.115.78.136" # as both code is running on same pc
-    port = 5000  # socket server port number
+    port = 5001  # socket server port number
 
     client_socket = socket.socket()  # instantiate
     client_socket.connect((host, port))  # connect to the server
@@ -40,7 +40,7 @@ def send():
 
 if __name__ == '__main__':
     host = socket.gethostname()  # "151.115.78.136" # as both code is running on same pc
-    port = 5000  # socket server port number
+    port = 5001  # socket server port number
 
     client_socket = socket.socket()  # instantiate
     client_socket.connect((host, port))  # connect to the server

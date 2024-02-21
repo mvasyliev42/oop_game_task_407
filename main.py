@@ -6,6 +6,7 @@ from services.mechanica.mechanicapc import MechanicaPC
 from services.mechanica.mechanicaplayers import MechanicaPlayers
 from services.socket.socketserver import SocketServer
 from services.telegram.telegram import *
+from services.match import Match
 
 
 #type_game = int(input("Get type game (0 - PC/ 1 - Player): "))
@@ -18,12 +19,25 @@ cards = config.read_config_database().create_card()
 player1 = Players(50, "player1", socket_server.connectPlayer1())
 
 #todo: create game match
-
+match = Match()
+socket_server.sendMessagesPlayer1("Set game's name")
+games_name = socket_server.recvMessagesPlayer1()
+socket_server.sendMessagesPlayer1("Set password")
+p1_password = socket_server.recvMessagesPlayer1()
+game_id = match.create_game(player1.users[0], games_name, p1_password)
+socket_server.sendMessagesPlayer1(f"Game created, id: {game_id}")
+socket_server.sendMessagesPlayer1("Waiting for player2...")
 
 
 
 
 player2 = Players(50, "player2", socket_server.connectPlayer2())
+socket_server.sendMessagesPlayer2("Set game's id")
+games_id = socket_server.recvMessagesPlayer2()
+socket_server.sendMessagesPlayer2("Set password")
+p2_password = socket_server.recvMessagesPlayer2()
+match_data = match.connect_match(player2.users[0], games_id, p2_password)
+socket_server.sendMessagesPlayer2(f"You have connected to the game {match_data[4]}")
 
 #todo: insert valid info (id, password)
 

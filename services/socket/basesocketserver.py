@@ -8,7 +8,7 @@ class BaseSocketServer:
 
         # get the hostname
         host = socket.gethostname()
-        port = 5000  # initiate port no above 1024
+        port = 5001  # initiate port no above 1024
 
         self._socket = socket.socket()  # get instance
         # look closely. The bind() function takes tuple as argument
