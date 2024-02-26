@@ -14,24 +14,18 @@ import threading
 
 
 
-def gema_logic():
+def game_logic():
 
     global connect_player1
 
     config = Configuration("config/card.conf")
 
     cards = config.read_config_database().create_card()
-    player1 = Players(50, "player1", socket_server.connectPlayer1(connect_player1))
-
-    match = Match()
-    socket_server.sendMessagesPlayer1("Set game's name")
-    games_name = socket_server.recvMessagesPlayer1()
-    socket_server.sendMessagesPlayer1("Set password")
-    p1_password = socket_server.recvMessagesPlayer1()
-    game_id = match.create_game(player1.users[0], games_name, p1_password)
-    socket_server.sendMessagesPlayer1(f"Game created, id: {game_id}")
+    game_id = games_id_list.pop(0)
+    player1 = games[game_id]["player1"]
+    socket_server.connectPlayer1(games[game_id]["connect1"])
+    #todo Create new object sendMessages to connectPlayer1
     socket_server.sendMessagesPlayer1("Waiting for player2...")
-
 
     #todo: wait player 2
 
@@ -96,12 +90,12 @@ def gema_logic():
 type_game = 1
 socket_server = SocketServer()
 
-thread_games = []
-
+games = {}
+games_id_list = []
 
 
 while True:
-    pass
+    users = socket_server.connectPlayer()
     #todo: wait player
 
     #todo: accept() user
@@ -109,13 +103,34 @@ while True:
     #todo: Auth
 
     #todo: set if: 1 - create, 2 - connect
+    socket_server.sendMessagesPlayer("Choose action: Write 1 - to Create new game; Write 2 - to Connect to the game")
+    recieve_message = socket_server.recvMessagesPlayer()
+    if recieve_message == '1':
+        player1 = Players(50, "player1", users)
+        match = Match()
+        socket_server.sendMessagesPlayer("Set game's name")
+        games_name = socket_server.recvMessagesPlayer()
+        socket_server.sendMessagesPlayer("Set password")
+        p1_password = socket_server.recvMessagesPlayer()
+        game_id = match.create_game(player1.users[0], games_name, p1_password)
+        socket_server.sendMessagesPlayer1(f"Game created, id: {game_id}")
+        games[game_id] = {
+            "game_id": game_id,
+            "connect1": socket_server.get_connect(),
+            "connect2": False,
+            "player1": player1,
+            "player2": False,
+            "password": p1_password,
+            "game_name": games_name
+        }
+        games_id_list.append(game_id)
+        thread = threading.Thread(target=game_logic)
+        thread.start()
 
     #todo: Create game
 
 
 
-    thread = threading.Thread(target=gema_logic)
-    thread.start()
 
 
     #todo: Insert id and password game
