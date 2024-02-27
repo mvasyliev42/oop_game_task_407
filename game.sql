@@ -14,11 +14,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Дамп структуры базы данных game
-CREATE DATABASE IF NOT EXISTS `game` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `game`;
-
 -- Дамп структуры для таблица game.cards
 CREATE TABLE IF NOT EXISTS `cards` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -32,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `cards` (
   `skill_health` float NOT NULL DEFAULT (0),
   `skill_manna` float NOT NULL DEFAULT (0),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Экспортируемые данные не выделены.
 
@@ -41,9 +36,11 @@ CREATE TABLE IF NOT EXISTS `games` (
   `id` int NOT NULL AUTO_INCREMENT,
   `player1_id` int NOT NULL DEFAULT '0',
   `player2_id` int NOT NULL DEFAULT '0',
+  `name` varchar(50) NOT NULL DEFAULT '0',
+  `password` varchar(50) NOT NULL DEFAULT '0',
   `playerwin_id` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Экспортируемые данные не выделены.
 
@@ -53,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Экспортируемые данные не выделены.
 

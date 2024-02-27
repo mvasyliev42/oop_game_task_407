@@ -22,10 +22,12 @@ class Match:
     def connect_match(self, player2_id, match_id, password):
         self.mycursor.execute("SELECT * FROM `games` WHERE `id`=%s AND `password`=%s", (match_id, password,))
         result = self.mycursor.fetchone()
+        print(result)
         if result == None:
             return False
         sql = "UPDATE games SET player2_id=%s WHERE id=%s"
         val = (player2_id, match_id,)
         self.mycursor.execute(sql, val)
         self.database.commit()
+        print('update')
         return result

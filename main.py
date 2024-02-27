@@ -118,7 +118,7 @@ while True:
         socket_server.sendMessagesPlayer("Set password")
         p1_password = socket_server.recvMessagesPlayer()
         game_id = match.create_game(player1.users[0], games_name, p1_password)
-        socket_server.sendMessagesPlayer1(f"Game created, id: {game_id}")
+        socket_server.sendMessagesPlayer(f"Game created, id: {game_id}")
         games[game_id] = {
             "game_id": game_id,
             "connect1": socket_server.get_connect(),
@@ -134,7 +134,7 @@ while True:
     if recieve_message == '2':
         player2 = Players(50, "player2", users)
         games_name = socket_server.sendMessagesPlayer("Set game's id")
-        games_id = socket_server.recvMessagesPlayer()
+        games_id = int(socket_server.recvMessagesPlayer())
         password = socket_server.sendMessagesPlayer("Set password")
         password1= socket_server.recvMessagesPlayer()
         match = Match()

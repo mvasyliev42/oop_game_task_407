@@ -37,8 +37,8 @@ class BaseSocketServer:
 
 
     def __del__(self):
-        self._connect1.close()
-        self._connect2.close()
+        self._connect.close()
+        # self._connect.close()
 
 
 

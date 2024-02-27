@@ -24,14 +24,14 @@ class SocketServer(BaseSocketServer):
    
 
     def sendMessagesPlayer(self, messages):
-        self._connect1.send(messages.encode())
+        self._connect.send(messages.encode())
 
     
 
    
 
     def recvMessagesPlayer(self):
-        return self._connect1.recv(1024).decode()
+        return self._connect.recv(1024).decode()
 
     def get_connect(self):
         return self._connect
