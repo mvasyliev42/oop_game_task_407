@@ -9,6 +9,7 @@ from services.telegram.telegram import *
 from services.match import Match
 import threading
 from services.socket.serversockettreads import ServerSocketTreads
+import time
 
 
 
@@ -32,16 +33,16 @@ def game_logic():
 
 
     #todo: wait player 2
+    while True:
+        time.sleep(1)
+        if (games[game_id]["connect2"]) != False:
+            break
+    
 
-    player2 = Players(50, "player2", socket_server.connectPlayer2())
+    player2 = games[game_id]["player2"]
+    socket_server.connectPlayer2(games[game_id]["connect2"])
 
 
-    socket_server.sendMessagesPlayer2("Set game's id")
-    games_id = socket_server.recvMessagesPlayer2()
-    socket_server.sendMessagesPlayer2("Set password")
-    p2_password = socket_server.recvMessagesPlayer2()
-    match_data = match.connect_match(player2.users[0], games_id, p2_password)
-    socket_server.sendMessagesPlayer2(f"You have connected to the game {match_data[4]}")
 
 
 
@@ -130,7 +131,17 @@ while True:
         games_id_list.append(game_id)
         thread = threading.Thread(target=game_logic)
         thread.start()
-
+    if recieve_message == '2':
+        player2 = Players(50, "player2", users)
+        games_name = socket_server.sendMessagesPlayer("Set game's id")
+        games_id = socket_server.recvMessagesPlayer()
+        password = socket_server.sendMessagesPlayer("Set password")
+        password1= socket_server.recvMessagesPlayer()
+        match = Match()
+        match_data = match.connect_match(player2.users[0], games_id, password1)
+        if match_data != False:
+             games[games_id]["connect2"] = socket_server.get_connect()
+             games[games_id]["player2"] = player2
     #todo: Create game
 
 
