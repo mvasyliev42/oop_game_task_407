@@ -8,6 +8,7 @@ from services.socket.socketserver import SocketServer
 from services.telegram.telegram import *
 from services.match import Match
 import threading
+from services.socket.serversockettreads import ServerSocketTreads
 
 
 
@@ -20,12 +21,15 @@ def game_logic():
 
     config = Configuration("config/card.conf")
 
+    socket_server = ServerSocketTreads()
+
     cards = config.read_config_database().create_card()
     game_id = games_id_list.pop(0)
     player1 = games[game_id]["player1"]
     socket_server.connectPlayer1(games[game_id]["connect1"])
     #todo Create new object sendMessages to connectPlayer1
     socket_server.sendMessagesPlayer1("Waiting for player2...")
+
 
     #todo: wait player 2
 
