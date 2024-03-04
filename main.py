@@ -18,6 +18,7 @@ import time
 
 def game_logic():
 
+    global match
     global connect_player1
 
     config = Configuration("config/card.conf")
@@ -74,25 +75,28 @@ def game_logic():
 
         mechanica.fight_function()
 
-        playerwinner = mechanica.check_winner()
+        # playerwinner = mechanica.check_winner()
 
-        #todo: check winner on health
-        list.append(playerwinner)
-        if list.count(player1) > 1:
-            print("game winer", playerwinner.name)
-            socket_server.sendMessagesPlayer1(f"game winer {playerwinner.name}")
-            socket_server.sendMessagesPlayer2(f"game winer {playerwinner.name}")
+        # list.append(playerwinner)
+
+        if player1.health <= 0 and player2.health <= 0:
+            socket_server.sendMessagesPlayer1(f"game winner: draw")
+            socket_server.sendMessagesPlayer2(f"game winner: draw")
+
+        elif player1.health <= 0:
+            socket_server.sendMessagesPlayer1(f"game winner Player2")
+            socket_server.sendMessagesPlayer2(f"game winner Player2")
+            match.set_winner_match(player2.users[0], game_id)
             break
-        if list.count(player2) > 1:
-            print("game winer", playerwinner.name)
-            socket_server.sendMessagesPlayer1(f"game winer {playerwinner.name}")
-            socket_server.sendMessagesPlayer2(f"game winer {playerwinner.name}")
+
+        if player2.health <= 0:
+            socket_server.sendMessagesPlayer1(f"game winner Player1")
+            socket_server.sendMessagesPlayer2(f"game winner Player1")
+            match.set_winner_match(player1.users[0], game_id)
             break
 
         #todo: use exps
 
-
-        print("round winer", playerwinner.name)
         print(list)
 
 

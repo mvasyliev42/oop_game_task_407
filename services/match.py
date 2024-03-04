@@ -31,3 +31,8 @@ class Match:
         self.database.commit()
         print('update')
         return result
+    def set_winner_match(self, player_winner_id, match_id):
+        sql = "UPDATE games SET playerwin_id=%s WHERE id=%s"
+        val = (player_winner_id, match_id)
+        self.mycursor.execute(sql, val)
+        self.database.commit()
