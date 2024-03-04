@@ -58,6 +58,7 @@ def game_logic():
     player2_cards = player2.print_card()
     socket_server.sendMessagesPlayer2(player2_cards)
 
+    #todo: set info for start match
     socket_server.recvMessagesPlayer1()
     socket_server.recvMessagesPlayer2()
 
@@ -72,7 +73,10 @@ def game_logic():
         mechanica.choose_cards(socket_server, socket_server)
 
         mechanica.fight_function()
+
         playerwinner = mechanica.check_winner()
+
+        #todo: check winner on health
         list.append(playerwinner)
         if list.count(player1) > 1:
             print("game winer", playerwinner.name)
@@ -84,6 +88,9 @@ def game_logic():
             socket_server.sendMessagesPlayer1(f"game winer {playerwinner.name}")
             socket_server.sendMessagesPlayer2(f"game winer {playerwinner.name}")
             break
+
+        #todo: use exps
+
 
         print("round winer", playerwinner.name)
         print(list)
@@ -101,13 +108,7 @@ games_id_list = []
 
 while True:
     users = socket_server.connectPlayer()
-    #todo: wait player
 
-    #todo: accept() user
-
-    #todo: Auth
-
-    #todo: set if: 1 - create, 2 - connect
     socket_server.sendMessagesPlayer("Choose action: Write 1 - to Create new game; Write 2 - to Connect to the game")
     recieve_message = socket_server.recvMessagesPlayer()
     if recieve_message == '1':
@@ -142,15 +143,9 @@ while True:
         if match_data != False:
              games[games_id]["connect2"] = socket_server.get_connect()
              games[games_id]["player2"] = player2
-    #todo: Create game
 
 
 
-
-
-    #todo: Insert id and password game
-
-    #todo: validate game info
 
     #todo: Check game activity
 
