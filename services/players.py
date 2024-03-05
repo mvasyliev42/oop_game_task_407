@@ -5,8 +5,23 @@ class Players:
         self.name = name
         self.card_list = []
         self.users = users
+        self.experience = 0
 
-        #todo: set userifno fields
+        # todo: set userifno fields
+
+    def set_experience(self, damage):
+        self.experience += damage
+
+    def use_experience(self, connect):
+        connect.send(f"У вас є така кількість атрибутів: {self.manna} ,{self.health}, {self.experience}")
+        connect.send("Скільки ти хочеш перевести на ману?: ")
+        use_count_experience = connect.recv()
+        self.experience -= use_count_experience
+        self.manna += use_count_experience
+        connect.send("Скільки ти хочеш перевести на здоров'є?: ")
+        use_count_health = connect.recv()
+        self.experience -= use_count_health
+        self.manna += use_count_health
 
     def add_card(self, card_object):
         self.card_list.append(card_object)
