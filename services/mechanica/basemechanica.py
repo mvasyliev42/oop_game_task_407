@@ -123,6 +123,8 @@ class BaseMechanica:
         self.player1.health -= damage2
         self.player2.health -= damage1
 
+        self.player1.set_experience(damage1)
+        self.player2.set_experience(damage2)
         #todo: set exps users
         self.player1.set_experience(damage1)
         self.player2.set_experience(damage2)

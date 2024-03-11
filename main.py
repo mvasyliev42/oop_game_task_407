@@ -95,6 +95,9 @@ def game_logic():
             match.set_winner_match(player1.users[0], game_id)
             break
 
+        player1.use_experience(socket_server)
+        player2.use_experience(socket_server)
+
         #todo: use exps
         player1.use_experience(connect_player1)
         

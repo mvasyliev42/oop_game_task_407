@@ -1,4 +1,5 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
+from services.authorisation import Authorisation
 import mysql.connector
 
 app = Flask(__name__)
@@ -29,12 +30,18 @@ def rating():
 
 @app.route('/api/auth',  methods=["POST"])
 def auth():
-    pass
-
+    data = request.json
+    authorisation = Authorisation(data["username"], data["password"])
+    login_result = authorisation.login()
+    return jsonify({"status":True, "data": login_result})
 
 @app.route('/api/profile',  methods=["GET"])
-def auth():
-    pass
+def profile():
+    token = request.headers.get("Authorization")
+    token = token.split(" ")[1]
+    object_auth = Authorisation()
+    new_data = object_auth.check_token(token)
+    return jsonify({"status": True, "data": new_data})
 
 if __name__ == '__main__':
     app.run(debug=True)
