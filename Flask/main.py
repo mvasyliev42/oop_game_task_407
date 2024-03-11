@@ -14,7 +14,9 @@ def rating():
     )
 
     mycursor = database.cursor()
-    mycursor.execute("SELECT users.username, playerwin_id, COUNT(playerwin_id) as countplayerwin FROM game.games LEFT JOIN game.users ON game.users.id = game.games.playerwin_id GROUP BY playerwin_id ORDER BY countplayerwin DESC;")
+    mycursor.execute("SELECT users.username, playerwin_id, COUNT(playerwin_id) as countplayerwin FROM game.games LEFT "
+                     "JOIN game.users ON game.users.id = game.games.playerwin_id GROUP BY playerwin_id ORDER BY "
+                     "countplayerwin DESC;")
     result = mycursor.fetchall()
     resultlist = []
     for i in result:
@@ -25,6 +27,14 @@ def rating():
         })
     return jsonify(resultlist)
 
+@app.route('/api/auth',  methods=["POST"])
+def auth():
+    pass
+
+
+@app.route('/api/profile',  methods=["GET"])
+def auth():
+    pass
 
 if __name__ == '__main__':
     app.run(debug=True)
