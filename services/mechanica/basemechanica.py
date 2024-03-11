@@ -124,6 +124,8 @@ class BaseMechanica:
         self.player2.health -= damage1
 
         #todo: set exps users
+        self.player1.set_experience(damage1)
+        self.player2.set_experience(damage2)
 
     def check_winner(self):
         if self.player1.health > self.player2.health:

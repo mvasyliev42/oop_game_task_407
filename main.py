@@ -96,6 +96,8 @@ def game_logic():
             break
 
         #todo: use exps
+        player1.use_experience(connect_player1)
+        
 
         print(list)
 
