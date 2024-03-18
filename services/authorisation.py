@@ -43,10 +43,10 @@ class Authorisation():
     def get_token(self, user_id):
         token = self.get_hash_password(self.username + "Random Text" + str(random.randint(0, 10000)))
         token = self.get_hash_password(token)
-        sql = "INSERT INTO tokens (user_id, token) VALUES (%s, %s)"
-        val = (user_id, token)
-        self.mycursor.execute(sql, val)
-        self.database.commit()
+        # sql = "INSERT INTO tokens (user_id, token) VALUES (%s, %s)"
+        # val = (user_id, token)
+        # self.mycursor.execute(sql, val)
+        # self.database.commit()
         return token
 
     def check_token(self, token):
