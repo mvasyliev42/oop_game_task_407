@@ -21,7 +21,7 @@ class Players:
         connect.send("Скільки ти хочеш перевести на здоров'є?: ")
         use_count_health = connect.recv()
         self.experience -= use_count_health
-        self.manna += use_count_health
+        self.health += use_count_health
 
     def add_card(self, card_object):
         self.card_list.append(card_object)
