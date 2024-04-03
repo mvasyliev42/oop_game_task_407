@@ -12,7 +12,7 @@ from tkinter.constants import *
 import os.path
 import requests
 import json
-
+import tkinter.font as tkFont
 _location = os.path.dirname(__file__)
 
 import unknown_support
@@ -30,7 +30,7 @@ class Toplevel1:
         '''This class configures and populates the toplevel window.
            top is the toplevel containing window.'''
 
-        top.geometry("648x554+451+124")
+        top.geometry("1050x593+0+0")
         top.minsize(120, 1)
         top.maxsize(1924, 1061)
         top.resizable(1,  1)
@@ -295,6 +295,159 @@ class Toplevel1:
         self.Entry4.configure(selectforeground="black")
         self.Frame1.tkraise()
 
+        self.Frame_game_arena = tk.Frame(self.top)
+        self.Frame_game_arena.place(relx=0.0, rely=0.0, relheight=0.987, relwidth=0.992)
+        self.Frame_game_arena.configure(relief='groove')
+        self.Frame_game_arena.configure(borderwidth="2")
+        self.Frame_game_arena.configure(relief="groove")
+        self.Frame_game_arena.configure(background="#d9d9d9")
+        self.Frame_game_arena.configure(highlightbackground="#d9d9d9")
+        self.Frame_game_arena.configure(highlightcolor="#000000")
+
+        GLabel_486 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_486["font"] = ft
+        GLabel_486["fg"] = "#333333"
+        GLabel_486["justify"] = "center"
+        GLabel_486["text"] = "Username"
+        GLabel_486.place(x=910, y=40, width=70, height=25)
+
+        GLabel_293 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_293["font"] = ft
+        GLabel_293["fg"] = "#333333"
+        GLabel_293["justify"] = "center"
+        GLabel_293["text"] = "Username"
+        GLabel_293.place(x=930, y=540, width=70, height=25)
+
+        GLabel_999 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_999["font"] = ft
+        GLabel_999["fg"] = "#333333"
+        GLabel_999["justify"] = "center"
+        GLabel_999["text"] = "Health,Manna"
+        GLabel_999.place(x=40, y=30, width=283, height=38)
+
+        GLabel_815 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_815["font"] = ft
+        GLabel_815["fg"] = "#333333"
+        GLabel_815["justify"] = "center"
+        GLabel_815["text"] = "Health,Manna"
+        GLabel_815.place(x=40, y=490, width=283, height=44)
+
+        GButton_668 = tk.Button(self.Frame_game_arena)
+        GButton_668["bg"] = "#f0f0f0"
+        ft = tkFont.Font(family='Times', size=10)
+        GButton_668["font"] = ft
+        GButton_668["fg"] = "#000000"
+        GButton_668["justify"] = "center"
+        GButton_668["text"] = "Card1"
+        GButton_668.place(x=40, y=130, width=70, height=25)
+        # GButton_668["command"] = self.GButton_668_command
+
+        GLabel_909 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_909["font"] = ft
+        GLabel_909["fg"] = "#333333"
+        GLabel_909["justify"] = "center"
+        GLabel_909["text"] = "label"
+        GLabel_909.place(x=170, y=130, width=70, height=25)
+
+        GButton_815 = tk.Button(self.Frame_game_arena)
+        GButton_815["bg"] = "#f0f0f0"
+        ft = tkFont.Font(family='Times', size=10)
+        GButton_815["font"] = ft
+        GButton_815["fg"] = "#000000"
+        GButton_815["justify"] = "center"
+        GButton_815["text"] = "Card2"
+        GButton_815.place(x=40, y=210, width=70, height=25)
+        # GButton_815["command"] = self.GButton_815_command
+
+        GLabel_902 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_902["font"] = ft
+        GLabel_902["fg"] = "#333333"
+        GLabel_902["justify"] = "center"
+        GLabel_902["text"] = "label"
+        GLabel_902.place(x=170, y=200, width=70, height=25)
+
+        GButton_804 = tk.Button(self.Frame_game_arena)
+        GButton_804["bg"] = "#f0f0f0"
+        ft = tkFont.Font(family='Times', size=10)
+        GButton_804["font"] = ft
+        GButton_804["fg"] = "#000000"
+        GButton_804["justify"] = "center"
+        GButton_804["text"] = "Card3"
+        GButton_804.place(x=40, y=290, width=70, height=25)
+        # GButton_804["command"] = self.GButton_804_command
+
+        GLabel_318 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_318["font"] = ft
+        GLabel_318["fg"] = "#333333"
+        GLabel_318["justify"] = "center"
+        GLabel_318["text"] = "label"
+        GLabel_318.place(x=170, y=290, width=70, height=25)
+
+        GLabel_353 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_353["font"] = ft
+        GLabel_353["fg"] = "#333333"
+        GLabel_353["justify"] = "center"
+        GLabel_353["text"] = "label"
+        GLabel_353.place(x=380, y=120, width=230, height=61)
+
+        GLabel_528 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_528["font"] = ft
+        GLabel_528["fg"] = "#333333"
+        GLabel_528["justify"] = "center"
+        GLabel_528["text"] = "label"
+        GLabel_528.place(x=380, y=190, width=235, height=50)
+
+        GLabel_161 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_161["font"] = ft
+        GLabel_161["fg"] = "#333333"
+        GLabel_161["justify"] = "center"
+        GLabel_161["text"] = "label"
+        GLabel_161.place(x=700, y=110, width=228, height=64)
+
+        GLabel_780 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_780["font"] = ft
+        GLabel_780["fg"] = "#333333"
+        GLabel_780["justify"] = "center"
+        GLabel_780["text"] = "label"
+        GLabel_780.place(x=700, y=190, width=239, height=42)
+
+        GLabel_874 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_874["font"] = ft
+        GLabel_874["fg"] = "#333333"
+        GLabel_874["justify"] = "center"
+        GLabel_874["text"] = "label"
+        GLabel_874.place(x=380, y=250, width=235, height=50)
+
+        GLabel_649 = tk.Label(self.Frame_game_arena)
+        ft = tkFont.Font(family='Times', size=10)
+        GLabel_649["font"] = ft
+        GLabel_649["fg"] = "#333333"
+        GLabel_649["justify"] = "center"
+        GLabel_649["text"] = "label"
+        GLabel_649.place(x=680, y=250, width=274, height=42)
+
+        GButton_847 = tk.Button(self.Frame_game_arena)
+        GButton_847["bg"] = "#f0f0f0"
+        ft = tkFont.Font(family='Times', size=10)
+        GButton_847["font"] = ft
+        GButton_847["fg"] = "#000000"
+        GButton_847["justify"] = "center"
+        GButton_847["text"] = "Button"
+        GButton_847.place(x=660, y=520, width=70, height=25)
+        # GButton_847["command"] = self.GButton_847_command
+
     def socket_auth(self):
         host = socket.gethostname()  # "151.115.78.136" # as both code is running on same pc
         port = 5001  # socket server port number
@@ -307,6 +460,9 @@ class Toplevel1:
         print(self.client_socket.recv(1024).decode())
         self.client_socket.send(self.Entry2.get().encode())
         self.Frame3.tkraise()
+
+
+
     def button_click(self):
         logintext =  self.Entry1.get()
         passwordtext =  self.Entry2.get()
