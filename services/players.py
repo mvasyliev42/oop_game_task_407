@@ -27,6 +27,7 @@ class Players:
         self.card_list.append(card_object)
 
     def print_card(self):
+        # todo: set json format data card
         message = ""
         message += self.name + "\n"
         for card in self.card_list:
@@ -35,5 +36,7 @@ class Players:
                 message += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}" + "\n"
         message += "\n"
         return message
+
+
 
     # todo: set userinfo add method
