@@ -1,3 +1,5 @@
+import json
+
 class Players:
     def __init__(self, helth, name, users):
         self.manna = 100
@@ -28,14 +30,18 @@ class Players:
 
     def print_card(self):
         # todo: set json format data card
-        message = ""
-        message += self.name + "\n"
+        message = []
+        # message += self.name + ""
         for card in self.card_list:
-            message += f"{card.name}, {card.description}, {card.strength}, {card.health}, {card.manna}" + "\n"
-            if card.skill:
-                message += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}" + "\n"
-        message += "\n"
-        return message
+            # card_json = {}
+            # message += f"{card.name}, {card.description}, {card.strength}, {card.health}, {card.manna}" + "\n"
+            # if card.skill:
+            #     message += f"\t {card.skill_name}, {card.skill_strength}, {card.skill_health}, {card.skill_manna}" + "\n"
+            message.append(card.to_json())
+        # message += "\n"
+        return json.dumps(message)
+
+
 
 
 

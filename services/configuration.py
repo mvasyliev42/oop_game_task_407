@@ -29,19 +29,19 @@ class Configuration:
         if len(divide) > 5:
             skill = {
                 "name": divide[6],
-                "strength": float(divide[7]),
-                "health": float(divide[8]),
-                "mana": float(divide[9])
+                "strength": float(divide[6]),
+                "health": float(divide[7]),
+                "mana": float(divide[8])
             }
         else:
             skill = False
 
         self.cards_configs.append({
-            "name": divide[1],
-            "description": divide[2],
-            "strength": float(divide[3]),
-            "health": float(divide[4]),
-            "mana": float(divide[5]),
+            "name": divide[0],
+            "description": divide[1],
+            "strength": float(divide[2]),
+            "health": float(divide[3]),
+            "mana": float(divide[4]),
             "skill": skill
         })
     def read_config_database(self):
@@ -56,5 +56,7 @@ class Configuration:
         _cursor.execute("SELECT * FROM `cards`")
         result = _cursor.fetchall()
         for i in result:
+            i = list(i)
+            i.pop(0)
             self.add_card_config(i)
         return self

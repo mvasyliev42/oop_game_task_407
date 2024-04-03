@@ -13,3 +13,17 @@ class Cards(BaseCard):
         self.skill_manna = skill_manna
         self.skill = True
 
+    def to_json(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "strength": self.strength,
+            "health": self.health,
+            "manna": self.manna,
+            "skill": {
+                "name":self.skill_name,
+                "strength": self.skill_strength,
+                "health": self.skill_health,
+                "manna": self.skill_manna,
+            }
+        }

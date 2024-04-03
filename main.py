@@ -5,7 +5,7 @@ from services.players import Players
 from services.mechanica.mechanicapc import MechanicaPC
 from services.mechanica.mechanicaplayers import MechanicaPlayers
 from services.socket.socketserver import SocketServer
-from services.telegram.telegram import *
+# from services.telegram.telegram import *
 from services.match import Match
 import threading
 from services.socket.serversockettreads import ServerSocketTreads
@@ -101,6 +101,17 @@ def game_logic():
         #todo: use exps
         player1.use_experience(connect_player1)
         
+
+        def use_experience(self, connect):
+            connect.send(f"У вас є така кількість атрибутів: {self.manna} ,{self.health}, {self.experience}")
+            connect.send("Скільки ти хочеш перевести на ману?: ")
+            use_count_experience = connect.recv()
+            self.experience -= use_count_experience
+            self.manna += use_count_experience
+            connect.send("Скільки ти хочеш перевести на здоров'є?: ")
+            use_count_health = connect.recv()
+            self.experience -= use_count_health
+            self.manna += use_count_health
 
         print(list)
 
